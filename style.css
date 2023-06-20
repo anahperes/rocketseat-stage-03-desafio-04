@@ -1,0 +1,309 @@
+/* GLOBAL SETUP */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ROOT ADJUSTMENTS */
+:root {
+    --ff-heading:'Staatliches', cursive;
+    --ff-texting: 'Palanquin', sans-serif;
+    --ff--texting-alt: 'Roboto', sans-serif;
+    --ff-footer: 'Open Sans', sans-serif;
+    
+    font-size: 62.5%;
+    --fs-body: 1.6rem;
+    --fs-heading: clamp(0.5rem, 2rem + 20vw, 4rem);
+    --fs-texting: clamp(0.5rem, 1rem + 1vw, 3rem);
+    --fs-heading-alt: clamp(0.5rem, 1rem + 20vw, 2.4rem);
+
+    --fc-heading: hsl(0, 0%, 100%);
+    --fc-subheading: hsl(232, 17%, 35%);
+    --fc-texting: hsl(274, 84%, 12%);
+    --fc-footer: hsl(232, 17%, 35%);
+
+
+    --bg-primary-dark: hsl(218, 17%, 62%);
+    --bg-primary-light: hsl(233, 100%, 97%);
+    --bg-secondary-dark: hsl(275, 18%, 79%);
+    --bg-secondary-light: hsl(312, 91%, 96%)
+}
+
+/* WHOLE PAGE SETUP */
+.page {
+    max-width: clamp(30rem, 10rem + 50vw, 90rem);
+
+    margin: 0px auto;
+}
+
+/* BODY SETUP */
+body {
+    font-family: var(--ff-heading);
+    font-size: var(--fs-body);
+    font-weight: 400;
+    line-height: 3.4rem;
+
+    text-align: center;
+}
+
+/* HEADER = LOG0 + SPACE CREAM */
+header {
+    width: 100%;
+    height: 27.9rem;
+
+    padding: 35rem auto;
+
+    background-color: var(--bg-primary-dark);
+}
+
+/* LOGO */
+header img {
+    margin-top: 3.2rem;
+    margin-left:  auto;
+    margin-right:  auto;
+
+    animation: slide-top-bottom 2s;
+}
+
+/* HEADER "SPACE CREAM" */
+header h1 {
+    font-size: var(--fs-heading);
+    letter-spacing: 0.05rem;
+    text-align: center;
+
+    color: var(--fc-heading);
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.5);
+    
+    padding: 8px 8.5rem;
+
+    background-color: var(--bg-secondary-dark);
+
+    animation: slide-top-bottom 2s;
+}
+
+/* MAIN */
+main {
+    padding: 1.4rem 3.2rem 6rem;
+
+    background-color: var(--bg-primary-light);
+}
+
+header p {
+    display: none;
+}
+
+/* PARAGRAPH */
+main p {
+    font-family: var(--ff-texting);
+    font-size: var(--fs-texting);
+    font-weight: 400;
+    line-height: 2.5rem;
+    
+
+    color: var(--fc-texting);
+
+    margin-bottom: 6.3rem;
+
+    animation: 2s fade-in;
+}
+
+/* DISPLAY GRID OF PRODUCTS */
+.menu {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.menu div:nth-child(3), .menu div:nth-child(5) {
+    display: none;
+}
+
+/* PRODUCT IMAGES */
+.card img {
+    border-radius: 2rem;
+
+    object-fit: cover;
+
+    width: 100%;
+    height: auto;
+
+    filter: brightness(0.8);
+
+    transition: 200ms ease-in-out;
+
+    animation: 2s fade-in;
+}
+
+/* IMG BEHAVIOUR ON HOVER */
+.card img:hover {
+    filter: brightness(1);
+
+    transform: scale(1.02);
+}
+
+/* .CARD RELATIVE POSITION TO H2 */
+.card {
+    position: relative;
+}
+
+/* PRODUCT TAG */
+.card h2 {
+    font-size: var(--fs-texting);
+    letter-spacing: 2px;
+
+    color: var(--fc-subheading);
+
+    background-color: var(--bg-secondary-light);
+    border-radius: 2rem;
+
+    padding: 5px 2rem;
+
+    position: absolute;
+    top: 2.5rem;
+    right: 4rem;
+
+    animation: 2s fade-in;
+}
+
+/* DO NOT DISPLAY FOOTER ON MENU */
+footer {
+    display: none;
+}
+
+/* ANIMATIONS */
+@keyframes slide-top-bottom {
+    0% {
+        transform: translateY(-1.5rem);
+        opacity: 0%;
+    }
+
+    100% {
+        transform: translateY(0rem);
+        opacity: 100%;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+/* RESPONSIVENESS */
+@media (min-width: 770px) {
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+
+    .page {
+        max-width: 195rem;
+        height: 100vh;
+
+        display: grid;
+        grid-template-columns: 1fr 2.5fr;
+    }
+
+    /* HEADER SETUP */
+    header {
+        height: auto;
+
+        margin: 0px;
+    }
+
+    /* DISPLAY PARAGRAPH ON HEADER */
+    header p {
+        display:inline-flex;
+
+        font-family: var(--ff--texting-alt);
+        font-size: var(--fs-heading-alt);
+        color: var(--fc-heading);
+
+        margin: 5rem 5rem 12rem;
+
+        animation: slide-top-bottom 2s;
+    }
+
+    /* MAIN SETUP */
+    main {
+        padding: 5rem 8rem;
+    }
+
+    /* DO NOT DISPLAY PARAGRAPH ON MENU */
+    main p {
+        display: none;
+    }
+  
+    /* MENU SETUP */
+    .menu {
+        display: grid;
+        align-items: start;
+        grid-template-areas:
+        "A B C"
+        "D E F";
+        gap: 3.2rem;    
+        grid-template-rows: 26%;
+    }
+
+    .menu div:nth-child(1) {
+        grid-area: A;
+    }
+
+    .menu div:nth-child(2) {
+        grid-area: B;
+    }
+
+    .menu div:nth-child(3) {
+        grid-area: C;
+    }
+
+    .menu div:nth-child(4) {
+        grid-area: E;
+        padding-top: 62%;
+    }
+
+    .menu div:nth-child(5) {
+        grid-area: D;
+    }
+
+    .menu div:nth-child(6) {
+        grid-area: F;
+    }
+
+    .menu div:nth-child(3), .menu div:nth-child(5) {
+        display: contents;
+    }
+
+    .card h2 {
+        display: none;
+    }
+
+     /* FOOTER SETUP */
+     footer {
+        display: block;
+
+        font-family: var(--ff-footer);
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 2.8rem;
+        color: var(--fc-footer);
+        text-align: center;
+
+        margin-top: -25rem;             /* FOOTER RESPONSIVENESS IS NOT WORKING PROPERLY */
+    }
+
+    /* FOOTER LINK SETUP */
+    footer a {
+        font-weight: 700;
+        color: var(--fc-footer);
+
+        text-decoration: none;
+    }
+    
+}
